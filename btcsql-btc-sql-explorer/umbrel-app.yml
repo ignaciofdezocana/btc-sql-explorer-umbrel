@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.0.0"
+version: "1.0.1"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -30,6 +30,9 @@ gallery: []
 path: ""
 defaultUsername: ""
 defaultPassword: ""
-releaseNotes: ""
+releaseNotes: >-
+  Fix startup on fresh installs: the database schema is now created
+  immediately so the web UI loads while the blockchain sync is in progress.
+  Added /api/sync-status endpoint and friendlier error messages.
 submitter: Ignacio Fernandez
 submission: ""
