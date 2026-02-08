@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.3.1"
+version: "1.4.0"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,9 +31,11 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  Fix mempool table access. The v1.3.0 read-only connection could not
-  ATTACH the mempool database. Now uses an in-memory connection with
-  both blockchain and mempool DBs attached as READ_ONLY, so
-  mempool.mempool_transactions queries work correctly.
+  UX improvements. Removed the full-screen blocking sync overlay — the
+  app now always shows the SQL editor with a slim progress banner during
+  sync, so you can browse queries and explore the schema immediately.
+  Fixed sync progress percentage to reflect overall chain progress
+  (current_block / tip_block) instead of only the current session's
+  progress.
 submitter: Ignacio Fernandez
 submission: ""
