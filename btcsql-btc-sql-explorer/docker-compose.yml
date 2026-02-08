@@ -7,7 +7,7 @@ services:
       APP_PORT: 5001
 
   web:
-    image: ignaciofdez/btc-sql-explorer:v1.0.1@sha256:977be29dd1a7030e4fdbaa3fe4dee0e086f47bcbdcd7a699e61c60a565877357
+    image: ignaciofdez/btc-sql-explorer:v1.0.2@sha256:7b4215e9532d315e901fc0bd9b15b2db6d7ca3dd71599ca93d4e63e93d383e09
     init: true
     restart: on-failure
     stop_grace_period: 1m

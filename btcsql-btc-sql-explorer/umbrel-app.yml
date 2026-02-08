@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.0.1"
+version: "1.0.2"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,8 +31,9 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  Fix startup on fresh installs: the database schema is now created
-  immediately so the web UI loads while the blockchain sync is in progress.
-  Added /api/sync-status endpoint and friendlier error messages.
+  Fix container crash on fresh installs. The database schema pre-creation
+  is now non-fatal so gunicorn always starts even if the data volume
+  has permission issues. Added /api/sync-status endpoint and friendlier
+  error messages during initial sync.
 submitter: Ignacio Fernandez
 submission: ""
