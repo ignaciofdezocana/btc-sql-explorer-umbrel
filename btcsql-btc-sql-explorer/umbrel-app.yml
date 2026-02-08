@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.4.2"
+version: "1.4.3"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,10 +31,10 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  Fix mempool Catalog Error once and for all. Both blockchain and
-  mempool DB schemas are now pre-created in entrypoint.sh before any
-  background process or the web server starts, eliminating any race
-  condition. Mempool queries return empty results while the node
-  finishes its initial sync.
+  Bulletproof mempool query support. If the mempool DB file is missing,
+  locked, or unavailable for any reason, the web app now falls back to
+  an in-memory database with empty mempool tables. This guarantees
+  mempool queries always return results (empty when unavailable) and
+  never produce a Catalog Error.
 submitter: Ignacio Fernandez
 submission: ""
