@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.5.0"
+version: "1.5.1"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,11 +31,10 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  Major sync speed improvement (3-5x faster). Block fetching now uses
-  batch RPC calls (many blocks per HTTP request) and parallel threads
-  instead of sequential one-at-a-time fetches. Default batch size
-  increased from 50 to 200 blocks. Mempool sync no longer waits for
-  Bitcoin Core IBD to finish — it starts immediately and writes empty
-  snapshots until the node catches up.
+  Tuned sync performance for Umbrel Home hardware. Batch RPC calls
+  reduce HTTP round trips from 100 to 2 per batch, but batch size
+  stays at 50 blocks to keep DB writes short and avoid locking out
+  the web UI. Removed parallel threads that overloaded Bitcoin Core
+  on ARM. Mempool sync starts immediately without waiting for IBD.
 submitter: Ignacio Fernandez
 submission: ""
