@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.5.2"
+version: "1.5.3"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,10 +31,11 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  Faster sync with batch RPC (2 HTTP requests per 50 blocks instead
-  of 100). Mempool sync starts immediately without waiting for IBD.
-  In-memory fallback guarantees mempool queries never produce Catalog
-  Errors. Removed full-screen sync overlay in favour of slim banner.
-  Fixed progress percentage to show overall chain progress.
+  v1.5.3 – Batch RPC: the sync loop now fetches 50 block hashes and
+  50 full blocks in just 2 HTTP requests instead of 100 sequential
+  ones, cutting sync time by ~2-3x. Mempool sync no longer waits for
+  IBD to finish, so mempool data is available as soon as the node is
+  reachable. No changes to DB write pattern or batch size, so web UI
+  responsiveness is unchanged.
 submitter: Ignacio Fernandez
 submission: ""
