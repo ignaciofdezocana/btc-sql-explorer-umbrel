@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.1.0"
+version: "1.1.1"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,9 +31,9 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  Added real-time sync progress UI. A full-screen progress overlay now
-  shows during initial sync with current block, target, speed, ETA, and
-  a progress bar. Once partial data is available, a slim banner replaces
-  the overlay and you can start querying while sync continues.
+  Fix data volume permission issue that prevented sync from writing the
+  database. The container now starts as root, fixes /data ownership for
+  UID 1000, then drops privileges with gosu. Also includes the real-time
+  sync progress UI with progress bar, speed, and ETA.
 submitter: Ignacio Fernandez
 submission: ""
