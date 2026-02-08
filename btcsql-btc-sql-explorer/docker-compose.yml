@@ -7,7 +7,7 @@ services:
       APP_PORT: 5001
 
   web:
-    image: ignaciofdez/btc-sql-explorer:v1.2.0@sha256:7eeb74165b75f87858ef5919ea1ed70f9ea7af422c93c1534db233dfab9fac99
+    image: ignaciofdez/btc-sql-explorer:v1.3.0@sha256:e838e15202659a80cf04a5b09b08864d3652baf4d4c10bef6fcf2df49526c9c8
     init: true
     restart: on-failure
     stop_grace_period: 1m
@@ -22,4 +22,5 @@ services:
       BITCOIN_NETWORK: ${APP_BITCOIN_NETWORK:-mainnet}
       # Persistent data paths
       DB_PATH: /data/bitcoin_blockchain.db
+      MEMPOOL_DB_PATH: /data/mempool.db
       SAVED_QUERIES_PATH: /data/saved_queries.db

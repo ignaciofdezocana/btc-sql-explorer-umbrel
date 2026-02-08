@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.2.0"
+version: "1.3.0"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,10 +31,11 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  Overhauled predefined queries: 18 queries across 5 categories including
-  Bitcoin Halving Epochs, Supply Curve, Miner Revenue breakdown, SegWit
-  Adoption, Empty Blocks, OP_RETURN data embedding, Genesis Block explorer,
-  Largest Transactions, Dust Outputs, and Block Weight Utilization. Fixed
-  fee analysis to use sat/vbyte. Removed redundant queries.
+  Real-time mempool SQL queries! A new background process polls your
+  node's mempool every 15 seconds and stores it in a queryable database.
+  Run SQL against unconfirmed transactions — analyze fee rate distributions,
+  find RBF-eligible txs, track CPFP chains, and monitor congestion over
+  time. Includes 6 new mempool example queries. Mempool tables appear
+  automatically in the schema sidebar.
 submitter: Ignacio Fernandez
 submission: ""
