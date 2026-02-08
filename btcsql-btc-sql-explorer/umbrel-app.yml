@@ -1,0 +1,35 @@
+manifestVersion: 1
+id: btcsql-btc-sql-explorer
+category: bitcoin
+name: BTC SQL Explorer
+version: "1.0.0"
+tagline: Run SQL queries against your Bitcoin blockchain
+description: >-
+  BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
+  using SQL. It syncs blocks, transactions, inputs, and outputs from your
+  node into a local DuckDB database and provides a modern web UI with a
+  CodeMirror SQL editor, results table, charting, and CSV export.
+
+
+  Write any SQL query against your own blockchain data — analyze fee
+  markets, track whale transactions, study mining patterns, examine script
+  types, and more. Includes a library of example queries to get started.
+
+
+  Your data never leaves your device. The app connects to your Umbrel's
+  Bitcoin Core node via local RPC and stores the SQL database on your
+  device's storage.
+developer: Ignacio Fernandez
+website: https://github.com/ignaciofdezocana/btc-sql-explorer
+dependencies:
+  - bitcoin
+repo: https://github.com/ignaciofdezocana/btc-sql-explorer-umbrel
+support: https://github.com/ignaciofdezocana/btc-sql-explorer-umbrel/issues
+port: 5001
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+releaseNotes: ""
+submitter: Ignacio Fernandez
+submission: ""

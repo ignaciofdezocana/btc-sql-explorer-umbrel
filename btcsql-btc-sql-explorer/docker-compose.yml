@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: btcsql-btc-sql-explorer_web_1
+      APP_PORT: 5001
+
+  web:
+    image: ignaciofdez/btc-sql-explorer:v1.0.0@sha256:f617ce8a2ed05e7ad8a4fbfb23d67c3dfa6c679497d436d4ed48e66600a1f0f6
+    init: true
+    restart: on-failure
+    stop_grace_period: 1m
+    volumes:
+      - ${APP_DATA_DIR}/data:/data
+    environment:
+      # Bitcoin Core RPC (injected by Umbrel)
+      BITCOIN_RPC_HOST: $APP_BITCOIN_NODE_IP
+      BITCOIN_RPC_PORT: $APP_BITCOIN_RPC_PORT
+      BITCOIN_RPC_USER: $APP_BITCOIN_RPC_USER
+      BITCOIN_RPC_PASS: $APP_BITCOIN_RPC_PASS
+      BITCOIN_NETWORK: ${APP_BITCOIN_NETWORK:-mainnet}
+      # Persistent data paths
+      DB_PATH: /data/bitcoin_blockchain.db
+      SAVED_QUERIES_PATH: /data/saved_queries.db

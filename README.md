@@ -1,17 +1,44 @@
-## Umbrel Community App Store Template
+# BTC SQL Explorer - Umbrel Community App Store
 
-This repository is a template to create an Umbrel Community App Store. These additional app stores allow developers to distribute applications without submitting to the [Official Umbrel App Store](https://github.com/getumbrel/umbrel-apps).
+Run SQL queries against your Bitcoin full node's blockchain data, directly from your Umbrel.
 
-## How to use:
+## What is BTC SQL Explorer?
 
-1. Start by clicking the "Use this template" button located above.
-2. Assign an ID and name to your app store within the `umbrel-app-store.yml` file. This file specifies two important attributes:
-    - `id` - Acts as a unique prefix for every app within your Community App Store. You must start your application's ID with your app store's ID. For instance, in this template, the app store ID is `sparkles`, and there's an app named `hello world`. Consequently, the app's ID should be: `sparkles-hello-world`.
-    - `name` - This is the name of the Community App Store displayed in the umbrelOS UI.
-3. Change the name of the `sparkles-hello-world` folder to match your app's ID. The app ID is for you to decide. For example, if your app store ID is `whistles`, and your app is named My Video Downloader, you could set its app ID to `whistles-my-video-downloader`, and rename the folder accordingly.
-4. Next, enter your app's listing details in the `whistles-my-video-downloader/umbrel-app.yml`. These are displayed in the umbrelOS UI.
-5. Include the necessary Docker services in `whistles-my-video-downloader/docker-compose.yml`.
-6. That's it! Your Community App Store, featuring your unique app, is now set up and ready to go. To use your Community App Store, you can add its GitHub url the umbrelOS user interface as shown in the following demo:
+BTC SQL Explorer syncs blocks, transactions, inputs, and outputs from your Bitcoin Core node into a local DuckDB database and provides a modern web UI with:
 
+- CodeMirror SQL editor with syntax highlighting
+- Results table with sorting and pagination
+- Interactive charts (bar, line, scatter, area, pie)
+- CSV export
+- Library of example queries to get started
+- Saved queries
 
-https://user-images.githubusercontent.com/10330103/197889452-e5cd7e96-3233-4a09-b475-94b754adc7a3.mp4
+Your data never leaves your device.
+
+## Install on your Umbrel
+
+1. Open your Umbrel dashboard
+2. Go to **App Store** > **Community App Stores**
+3. Add this repository URL:
+
+```
+https://github.com/ignaciofdezocana/btc-sql-explorer-umbrel
+```
+
+4. Find **BTC SQL Explorer** in the App Store and click **Install**
+
+## Requirements
+
+- An Umbrel Home (or any device running umbrelOS)
+- **Bitcoin Node** app installed and fully synced
+
+## How it works
+
+Once installed, BTC SQL Explorer automatically connects to your Umbrel's Bitcoin Core node via local RPC. A background sync process continuously ingests new blocks into a DuckDB database stored on your device. The web UI is accessible from your Umbrel dashboard.
+
+Initial sync will take some time depending on how many blocks your node has. Progress is shown in the app logs.
+
+## Source Code
+
+- **App**: [github.com/ignaciofdezocana/btc-sql-explorer](https://github.com/ignaciofdezocana/btc-sql-explorer)
+- **Umbrel packaging**: [github.com/ignaciofdezocana/btc-sql-explorer-umbrel](https://github.com/ignaciofdezocana/btc-sql-explorer-umbrel)
