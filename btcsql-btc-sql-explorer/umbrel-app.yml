@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.7.5"
+version: "1.7.6"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,10 +31,10 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  v1.7.5 – Fix device freeze caused by v1.7.4. Reverted batch size
-  from 200 to 50 (memory-safe for 4GB devices). Changed DuckDB
-  auto-checkpoint threshold from 16GB to 256MB to cap WAL growth.
-  Manual checkpoint now every 20 batches (1000 blocks) instead of 50.
-  Retains checkpoint control for speed while staying safe on Umbrel Home.
+  v1.7.6 – Fix device freeze and sync stalls. Removed all manual
+  CHECKPOINT calls that caused 60-95s pauses. Raised WAL auto-checkpoint
+  to 4GB (WAL grows on disk, not RAM). Increased Gunicorn timeout to
+  600s to prevent worker kills during rare checkpoints. Added DuckDB
+  memory_limit = 512MB to stay safe on 4GB Umbrel Home devices.
 submitter: Ignacio Fernandez
 submission: ""
