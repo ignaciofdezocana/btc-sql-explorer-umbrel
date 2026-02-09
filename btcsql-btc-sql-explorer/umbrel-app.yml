@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.7.3"
+version: "1.7.4"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,8 +31,11 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  v1.7.3 – Fix timing diagnostics: row counts now captured before
-  flush_batch clears the buffers, so logs correctly show actual data
-  volume per batch (blocks, txs, inputs, outputs).
+  v1.7.4 – Fix persistent sync speed degradation. Disabled DuckDB
+  auto-checkpointing during bulk sync (replaced with manual checkpoint
+  every 10,000 blocks) to eliminate multi-second write stalls. Increased
+  batch size from 50 to 200 blocks for 4x fewer transaction cycles.
+  Reduced status file I/O to every 5th batch. Expected 10-20+ blk/s
+  sustained.
 submitter: Ignacio Fernandez
 submission: ""
