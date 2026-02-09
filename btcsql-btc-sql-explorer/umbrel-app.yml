@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.7.1"
+version: "1.7.2"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,11 +31,10 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  v1.7.1 – Sync speed optimization. Mempool sync is now postponed until
-  blockchain is fully caught up, eliminating write-lock contention during
-  the initial block sync. Mempool inserts upgraded to DataFrame-based
-  bulk writes for 10-100x faster refreshes. Added per-batch timing
-  diagnostics (RPC, parse, lock-wait, write durations) to both sync
-  threads for easier performance monitoring.
+  v1.7.2 – Major sync speed improvement. All blockchain insert functions
+  (blocks, transactions, inputs, outputs) converted from row-by-row
+  executemany to DataFrame-based bulk inserts, delivering 10-50x faster
+  DB writes per batch. Combined with v1.7.1's mempool postponement, this
+  should dramatically reduce total sync time.
 submitter: Ignacio Fernandez
 submission: ""
