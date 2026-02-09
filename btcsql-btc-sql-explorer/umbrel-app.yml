@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.7.0"
+version: "1.7.1"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,13 +31,11 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  v1.7.0 – Major architecture overhaul that eliminates "Database is
-  temporarily busy" errors and dramatically speeds up sync. Blockchain
-  and mempool sync now run as background threads inside the web server
-  process, using DuckDB's in-process MVCC for zero-contention concurrent
-  reads and writes. No more file-lock retries or sleep windows. Mempool
-  tables merged into the main database (use mempool_transactions instead
-  of mempool.mempool_transactions). Gunicorn changed to single worker
-  with 4 threads.
+  v1.7.1 – Sync speed optimization. Mempool sync is now postponed until
+  blockchain is fully caught up, eliminating write-lock contention during
+  the initial block sync. Mempool inserts upgraded to DataFrame-based
+  bulk writes for 10-100x faster refreshes. Added per-batch timing
+  diagnostics (RPC, parse, lock-wait, write durations) to both sync
+  threads for easier performance monitoring.
 submitter: Ignacio Fernandez
 submission: ""
