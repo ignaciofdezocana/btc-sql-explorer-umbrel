@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.7.4"
+version: "1.7.5"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,11 +31,10 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  v1.7.4 – Fix persistent sync speed degradation. Disabled DuckDB
-  auto-checkpointing during bulk sync (replaced with manual checkpoint
-  every 10,000 blocks) to eliminate multi-second write stalls. Increased
-  batch size from 50 to 200 blocks for 4x fewer transaction cycles.
-  Reduced status file I/O to every 5th batch. Expected 10-20+ blk/s
-  sustained.
+  v1.7.5 – Fix device freeze caused by v1.7.4. Reverted batch size
+  from 200 to 50 (memory-safe for 4GB devices). Changed DuckDB
+  auto-checkpoint threshold from 16GB to 256MB to cap WAL growth.
+  Manual checkpoint now every 20 batches (1000 blocks) instead of 50.
+  Retains checkpoint control for speed while staying safe on Umbrel Home.
 submitter: Ignacio Fernandez
 submission: ""
