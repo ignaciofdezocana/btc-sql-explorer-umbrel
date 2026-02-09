@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.6.0"
+version: "1.6.1"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,11 +31,10 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  v1.6.0 – Query tabs: open multiple queries side by side, each with
-  its own editor, results, and execution state. Click "+" to add a
-  tab, middle-click or "x" to close. Sidebar queries load into the
-  active tab with the query name as the tab title. Also includes
-  batch RPC sync (2 HTTP requests per 50 blocks) and immediate
-  mempool polling from v1.5.3.
+  v1.6.1 – Fixes "Database is temporarily busy" errors introduced by
+  batch RPC. Adds a 100ms reader window after each DB write so the
+  web UI can always acquire a read lock. Jittered retry delays in the
+  web app break phase-locking with the sync loop. Includes query tabs
+  and batch RPC sync from v1.6.0.
 submitter: Ignacio Fernandez
 submission: ""
