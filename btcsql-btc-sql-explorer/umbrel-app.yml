@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.7.8"
+version: "1.7.9"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,9 +31,9 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  v1.7.8 – Fix OOM caused by unbounded WAL growth. Restored DuckDB
-  auto-checkpoint at 256MB (safe now with 600s Gunicorn timeout).
-  Limited DuckDB to 2 threads to reduce memory pressure. Keeps
-  memory_limit=1GB and preserve_insertion_order=false from v1.7.7.
+  v1.7.9 – Fix persistent OOM. Raised DuckDB memory_limit from 1GB
+  to 4GB (device has 16GB RAM — the 1GB cap was the root cause of
+  all recent OOM errors). Keeps threads=2, preserve_insertion_order=false,
+  and wal_autocheckpoint=256MB.
 submitter: Ignacio Fernandez
 submission: ""
