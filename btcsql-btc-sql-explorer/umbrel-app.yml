@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.8.1"
+version: "1.8.2"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,11 +31,11 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  v1.8.1 – Adaptive batch sizing: batch_size now auto-adjusts to
-  target ~5000 transactions per batch. Early blocks (1 tx) fly at
-  200 blocks/batch; later blocks (2000+ tx) shrink to 5 blocks/batch.
-  This prevents worker timeouts and maintains consistent sync speed
-  throughout the chain. WAL auto-checkpoint raised from 256MB to 2GB
-  to reduce write stalls.
+  v1.8.2 – Accurate sync ETA and ~40% speed boost. Progress is now
+  transaction-weighted (not block-count-based) so the percentage and
+  ETA no longer mislead when early blocks are tiny. Rate uses a
+  rolling 60-second window for stable estimates. RPC fetching is now
+  pipelined with DB writes, overlapping the two slowest operations.
+  Banner shows tx/s throughput instead of blk/s.
 submitter: Ignacio Fernandez
 submission: ""
