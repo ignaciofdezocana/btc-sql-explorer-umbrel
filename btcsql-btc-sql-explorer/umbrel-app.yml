@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.7.10"
+version: "1.8.0"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,11 +31,10 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  v1.7.10 – Delete stale WAL file on startup. Previous versions
-  accumulated a multi-GB WAL that was never checkpointed, causing OOM
-  on every restart regardless of memory_limit. Entrypoint now removes
-  the .wal file before opening the database. Sync re-fetches any
-  blocks that were only in the WAL. Also logs DB and WAL file sizes
-  for diagnostics.
+  v1.8.0 – Fix persistent OOM caused by bloated 47GB database. The
+  entrypoint now detects and removes databases >20GB (bloated from
+  v1.7.x failures). Sync rebuilds cleanly from block 0. Removed the
+  artificial memory_limit — DuckDB now auto-detects from system RAM.
+  Fixed a bug where ROLLBACK errors masked the real OOM message.
 submitter: Ignacio Fernandez
 submission: ""
