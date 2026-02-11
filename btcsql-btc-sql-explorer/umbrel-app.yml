@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.8.0"
+version: "1.8.1"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,10 +31,11 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  v1.8.0 – Fix persistent OOM caused by bloated 47GB database. The
-  entrypoint now detects and removes databases >20GB (bloated from
-  v1.7.x failures). Sync rebuilds cleanly from block 0. Removed the
-  artificial memory_limit — DuckDB now auto-detects from system RAM.
-  Fixed a bug where ROLLBACK errors masked the real OOM message.
+  v1.8.1 – Adaptive batch sizing: batch_size now auto-adjusts to
+  target ~5000 transactions per batch. Early blocks (1 tx) fly at
+  200 blocks/batch; later blocks (2000+ tx) shrink to 5 blocks/batch.
+  This prevents worker timeouts and maintains consistent sync speed
+  throughout the chain. WAL auto-checkpoint raised from 256MB to 2GB
+  to reduce write stalls.
 submitter: Ignacio Fernandez
 submission: ""
