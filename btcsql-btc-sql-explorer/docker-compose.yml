@@ -7,10 +7,13 @@ services:
       APP_PORT: 5001
 
   web:
-    image: ignaciofdez/btc-sql-explorer:v1.8.3@sha256:87a549d89bcbab45b9d205a59d5192975daa4931806e882701b558a3e132f2c3
+    image: ignaciofdez/btc-sql-explorer:v1.8.4@sha256:b151f98b1fe0767a75610d6c4c4419b310dbb6462fd5e8834547c79200fa81b0
     init: true
     restart: on-failure
     stop_grace_period: 1m
+    mem_limit: 3584m
+    memswap_limit: 3584m
+    cpus: 2.0
     volumes:
       - ${APP_DATA_DIR}/data:/data
     environment:

@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.8.3"
+version: "1.8.4"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,10 +31,13 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  v1.8.3 – Fix worker timeout caused by pipelining bug. The prefetch
-  now uses the correctly adapted batch_size (parse first, adapt, then
-  prefetch) preventing monster 30K+ tx batches. WAL auto-checkpoint
-  lowered from 2GB to 512MB to avoid minute-long process stalls.
-  MAX_BATCH capped at 100 to prevent oversized RPC responses.
+  v1.8.4 – Fix device freezing and dramatically speed up sync.
+  Docker container now hard-capped at 3.5GB RAM / 2 CPUs to prevent
+  OOM and device unresponsiveness. DuckDB memory explicitly limited
+  to 1.5GB. Indexes dropped during bulk sync and recreated at the
+  end for 30-50% faster writes. Write batches accumulated to 50K tx
+  before flushing (10x fewer DB transactions). WAL checkpoint reduced
+  to 256MB with periodic explicit checkpoints. Progress banner now
+  shows block-based percentage so early sync looks correct.
 submitter: Ignacio Fernandez
 submission: ""
