@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.8.5"
+version: "1.8.6"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,15 +31,16 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  v1.8.5 – Diagnostics & logging overhaul to track down sync stalls.
-  Adds persistent, timestamped logs under /data/logs that survive
-  restarts (no more losing the evidence when the container restarts),
-  plus a resource/heartbeat monitor that records memory, WAL, and disk
-  usage every 15 seconds. A new "Diagnostics" button in the top bar
-  downloads a single bundle (logs + system snapshot) you can share when
-  the sync gets stuck. Also adds startup schema validation, a data
-  directory writability check, automatic retries on block fetches with
-  backoff, and clearer memory/checkpoint/Gunicorn warnings. No changes
-  to query behavior or sync logic.
+  v1.8.6 – Faster, lighter sync and clearer progress. The progress
+  banner now shows transaction-weighted percentage (the honest measure)
+  instead of block percentage, which previously raced to ~25% and then
+  appeared stuck while grinding through the dense middle of the chain.
+  Smaller write batches and more memory/CPU headroom (5GB / 3 CPUs) cut
+  the out-of-memory pressure seen during sync and reduce disk spilling.
+  The database schema no longer stores the redundant, derivable
+  script_asm column, substantially shrinking the database and speeding
+  up writes. IMPORTANT: this schema change rebuilds the blockchain
+  database from scratch on first launch (saved queries are kept). If you
+  need script disassembly in queries, derive it from script_hex.
 submitter: Ignacio Fernandez
 submission: ""
