@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.8.7"
+version: "1.8.8"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,15 +31,16 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  v1.8.7 – Much smaller database. The schema no longer stores three
-  derivable/rarely-used columns: each transaction's block_timestamp and
-  block_hash (now provided on demand by the new v_transactions view), and
-  each input's raw scriptSig hex. This roughly cuts the fully-synced
-  database size by ~20% (on top of v1.8.6), helping a full mainnet sync
-  fit comfortably on disk. Queries that need a transaction's block time or
-  hash should use the v_transactions view (the built-in examples already
-  do). IMPORTANT: this schema change rebuilds the blockchain database from
-  scratch on first launch (saved queries are kept) — so update sooner
-  rather than later to avoid discarding sync progress.
+  v1.8.8 – Stop the app from starving your Bitcoin node. Under heavy sync
+  the app could use enough memory/CPU to push the whole device out of RAM,
+  causing the system to kill Bitcoin Core. This release makes it a "good
+  roommate": a hard 3GB / 2-CPU limit (down from 5GB / 3-CPU) guarantees
+  plenty of RAM and cores stay free for the node, smaller RPC batches keep
+  the node's load light, and DuckDB uses less memory. It also removes an
+  old safeguard that wrongly deleted large (but healthy) databases on
+  restart — your sync progress is now preserved across restarts. No schema
+  change: updating keeps your existing synced data and resumes where it
+  left off. Trade-off: the initial sync runs somewhat slower in exchange
+  for not disrupting the node.
 submitter: Ignacio Fernandez
 submission: ""
