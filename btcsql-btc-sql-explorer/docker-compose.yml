@@ -7,7 +7,7 @@ services:
       APP_PORT: 5001
 
   web:
-    image: ignaciofdez/btc-sql-explorer:v1.8.9@sha256:6bc33b04941c88bee74a1dcb9905de14dae6f76a77cae7d75a0603a895d10df3
+    image: ignaciofdez/btc-sql-explorer:v1.8.10@sha256:5fae298803eb5a16fadcf595c0818e3812b3fa0fd64b33e3a16fc05fd88c7987
     init: true
     restart: on-failure
     stop_grace_period: 1m
@@ -15,8 +15,12 @@ services:
     # caps let the device run out of RAM overnight and the kernel OOM-killed the
     # node. A hard 3GB/2cpu cap guarantees ~12GB+ and 2 cores stay free for the
     # node and OS, so the device can't be starved. (Trade-off: a slower sync.)
-    mem_limit: 3072m
-    memswap_limit: 3072m
+    # v1.8.10: small bump from 3GB to give DuckDB room to operate on a large
+    # (tens-of-GB) database — at 1.5GB it couldn't even insert/index and
+    # crash-looped. Still well below the 5GB that starved the node. The device
+    # remains tight; watch SYSTEM_MEMORY_LOW warnings.
+    mem_limit: 3584m
+    memswap_limit: 3584m
     cpus: 2.0
     volumes:
       - ${APP_DATA_DIR}/data:/data
@@ -31,8 +35,8 @@ services:
       DB_PATH: /data/bitcoin_blockchain.db
       SAVED_QUERIES_PATH: /data/saved_queries.db
       # Sync tuning — kept lean so we coexist with the node (see mem cap above)
-      DUCKDB_MEMORY_LIMIT: 1536MB
+      DUCKDB_MEMORY_LIMIT: 2048MB
       DUCKDB_THREADS: "2"
-      FLUSH_TX_THRESHOLD: "15000"
+      FLUSH_TX_THRESHOLD: "8000"
       # Smaller RPC batches = smaller memory/CPU spikes on Bitcoin Core
       RPC_MAX_BATCH: "50"

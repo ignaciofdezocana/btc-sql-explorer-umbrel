@@ -2,7 +2,7 @@ manifestVersion: 1
 id: btcsql-btc-sql-explorer
 category: bitcoin
 name: BTC SQL Explorer
-version: "1.8.9"
+version: "1.8.10"
 tagline: Run SQL queries against your Bitcoin blockchain
 description: >-
   BTC SQL Explorer lets you query your Bitcoin full node's blockchain data
@@ -31,13 +31,13 @@ path: ""
 defaultUsername: ""
 defaultPassword: ""
 releaseNotes: >-
-  v1.8.9 – Accurate memory warnings. The diagnostics log previously raised
-  scary "MEMORY_CRITICAL — OOM imminent" warnings whenever the app used its
-  own (intentionally bounded) memory budget, even when the device had plenty
-  of free RAM. Memory alarms now key off the device's actual free memory —
-  the signal that genuinely predicts trouble — so the logs are no longer
-  noisy with false alarms. A separate, quieter notice covers the rare case
-  where the app itself nears its limit. Logging-only change; no effect on
-  sync behaviour or your existing data.
+  v1.8.10 – Fix a startup crash-loop. On a large database the app tried to
+  rebuild big indexes at startup, which exceeded its memory budget and made
+  it restart endlessly (showing a connection error in the UI). The app no
+  longer builds those large indexes at all — DuckDB scans the data fast
+  without them — and it gives the database a bit more memory to work with
+  (limit raised from 3GB to 3.5GB) so it can handle a large dataset. No
+  schema change: your existing synced data is kept and resumes. If you were
+  hit by the crash-loop, this update restores the app.
 submitter: Ignacio Fernandez
 submission: ""
